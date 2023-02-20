@@ -13,10 +13,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Build the Docker image
-      run: docker build -t go-app .
+      run: docker build -t 2devops3/go-app .
 
     - name: Test the Docker image
-      run: docker run -p 8080:8080 go-app go test -v
+      run: docker run -p 8080:8080 2devops3/go-app 
 
     - name: Publish the Docker image
       uses: docker/build-push-action@v2
