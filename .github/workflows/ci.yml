@@ -16,7 +16,7 @@ jobs:
       run: docker build -t 2devops3/go-app .
 
     - name: Test the Docker image
-      run: docker run -p 8080:8080 2devops3/go-app 
+      run: docker run -p 8082:8080 2devops3/go-app 
 
     - name: Publish the Docker image
       uses: docker/build-push-action@v2
