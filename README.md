@@ -1,6 +1,6 @@
 # docker-gs-ping
 
-A simple Go server/microservice example for [Docker's Go Language Guide](https://docs.docker.com/language/golang/).
+A simple GO server/microservice example for [Docker's Go Language Guide](https://docs.docker.com/language/golang/).
 
 Notable features:
 
