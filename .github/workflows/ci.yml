@@ -22,10 +22,14 @@ jobs:
       run: docker build -t 2devops3/go-app .
       
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping
+      env:
+        IMAGE_TAG: ${{ github.run_id }}
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping:$IMAGE_TAG
 
     - name: Docker Push
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping
+      env:
+        IMAGE_TAG: ${{ github.run_id }}
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping:$IMAGE_TAG
 
 #     - name: Publish the Docker image
 #       uses: docker/build-push-action@v2
