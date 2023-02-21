@@ -14,8 +14,6 @@ spec:
     spec:
       containers:
       - name: go-app
-        env:
-          IMAGE_TAG: ${{ github.run_number }}
-        image: 2devops3/docker-gs-ping:$IMAGE_TAG
+        image: 2devops3/docker-gs-ping:latest
         ports:
         - containerPort: 8082
