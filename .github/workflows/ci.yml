@@ -18,17 +18,17 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build the Docker image
-      run: docker build -t 2devops3/go-app .
+#     - name: Build the Docker image
+#       run: docker build -t 2devops3/go-app .
       
     - name: Build the Docker image
       env:
-        IMAGE_TAG: ${{ github.run_id }}
+        IMAGE_TAG: ${{ github.run_number }}
       run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping:$IMAGE_TAG
 
     - name: Docker Push
       env:
-        IMAGE_TAG: ${{ github.run_id }}
+        IMAGE_TAG: ${{ github.run_number }}
       run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping:$IMAGE_TAG
 
 #     - name: Publish the Docker image
