@@ -28,16 +28,16 @@ jobs:
     - name: Docker Push
       run: docker push $DOCKER_REPOSITORY/$IMAGE_NAME:$IMAGE_TAG
       
-    - name: Replace tokens
-      uses: cschleiden/replace-tokens@v1.2
-      with:
-        files: '["*.yaml"]'
-        tokenPrefix: '__' # optional, default is #{
-        tokenSuffix: '__' # optional, default is }#
-      env:
-        DOCKER_REPOSITORY: ${{ env.DOCKER_REPOSITORY }}
-        IMAGE_NAME: ${{ env.IMAGE_NAME }}
-        IMAGE_TAG: ${{ env.IMAGE_TAG }}
+#     - name: Replace tokens
+#       uses: cschleiden/replace-tokens@v1.2
+#       with:
+#         files: '["*.yaml"]'
+#         tokenPrefix: '__' # optional, default is #{
+#         tokenSuffix: '__' # optional, default is }#
+#       env:
+#         DOCKER_REPOSITORY: ${{ env.DOCKER_REPOSITORY }}
+#         IMAGE_NAME: ${{ env.IMAGE_NAME }}
+#         IMAGE_TAG: ${{ env.IMAGE_TAG }}
     
     
     
