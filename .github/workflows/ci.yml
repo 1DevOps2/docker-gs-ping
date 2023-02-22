@@ -30,7 +30,7 @@ jobs:
     
     - name: Update image tag in manifest
       run: |
-        pwd && sed -i 's|image: 2devops3/docker-gs-ping:v\.|image: 2devops3/docker-gs-ping:v.${{ github.run_number }}|g' deployment.yaml
+        pwd && sed -i 's|image: 2devops3/docker-gs-ping:v\.|image: 2devops3/docker-gs-ping:v.${{ github.run_number }}|g' /1DevOps2/docker-gs-ping/deployment.yaml
         
 
     
