@@ -8,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_REPOSITORY: ${{ secrets.DOCKER_USERNAME }} # name of Docker Hub ID
+      IMAGE_NAME: docker-gs-ping
+      IMAGE_TAG: ${{ github.run_number }} # $GITHUB_RUN_NUMBER
 
     steps:
     - uses: actions/checkout@v3
@@ -19,22 +23,43 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
       
     - name: Build the Docker image
-      env:
-        IMAGE_TAG: ${{ github.run_number }}
-      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping:$IMAGE_TAG
+      run: docker build . --file Dockerfile --tag $DOCKER_REPOSITORY/$IMAGE_NAME:$IMAGE_TAG
 
     - name: Docker Push
+      run: docker push $DOCKER_REPOSITORY/$IMAGE_NAME:$IMAGE_TAG
+      
+    - uses: cschleiden/replace-tokens@v1
+      with:
+        files: '["*.yaml"]'
+        tokenPrefix: __ # optional, default is #{
+        tokenSuffix: __ # optional, default is }#
       env:
-        IMAGE_TAG: ${{ github.run_number }}
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/docker-gs-ping:$IMAGE_TAG
+        DOCKER_REPOSITORY: ${{ env.DOCKER_REPOSITORY }}
+        IMAGE_NAME: ${{ env.IMAGE_NAME }}
+        IMAGE_TAG: ${{ env.IMAGE_TAG }}
     
-    - name: Update image tag in manifest
-      run: |
-        sed -i 's|image: 2devops3/docker-gs-ping:v\.|image: 2devops3/docker-gs-ping:v.${{ github.run_number }}|g' ${{ github.workspace }}/deployment.yaml
-        pwd
-        cd .. && pwd && ls
-        cd ../../ && pwd && ls
-        cd ../../../ && pwd && ls
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#     - name: Update image tag in manifest
+#       run: |
+#         sed -i 's|image: 2devops3/docker-gs-ping:v\.|image: 2devops3/docker-gs-ping:v.${{ github.run_number }}|g' ${{ github.workspace }}/deployment.yaml
+
         
 
     
