@@ -32,7 +32,8 @@ jobs:
       run: |
         sed -i 's|image: 2devops3/docker-gs-ping:v\.|image: 2devops3/docker-gs-ping:v.${{ github.run_number }}|g' deployment.yaml
         pwd
-        cd .. && pwd
+        cd .. && pwd && ls
+        cd ../../ && pwd && ls
         
 
     
