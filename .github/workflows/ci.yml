@@ -40,8 +40,10 @@ jobs:
 #         IMAGE_TAG: ${{ env.IMAGE_TAG }}
         
     - name: check kubeconfig secrets
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }} 
       run: |
-          echo ${{ secrets.KUBECONFIG }} | base64 --decode
+          echo $KUBECONFIG | base64 --decode
     
 #     - name: Configure Kubernetes
 #       env:
