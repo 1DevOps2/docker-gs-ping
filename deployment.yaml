@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: __DOCKER_REPOSITORY__/__IMAGE_NAME__:__IMAGE_TAG__
+        image: 2devops3/docker-gs-ping:dev-$git_hash
         ports:
         - containerPort: 8082
