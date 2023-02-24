@@ -45,7 +45,7 @@ jobs:
     - name: ArgoCD Application Sync Action
       uses: omegion/argocd-actions@v0.2.0
       with:
-        address: "https://127.0.0.1:8080/"
+        address: "127.0.0.1:8080"
         token: ${{ secrets.ARGOCD_AUTH_TOKEN }}
         insecure: "true"
         # Modify app name
