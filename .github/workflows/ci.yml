@@ -47,7 +47,7 @@ jobs:
       with:
         address: "127.0.0.1:8080"
         token: ${{ secrets.ARGOCD_AUTH_TOKEN }}
-        insecure: "true"
+        insecure: "false"
         # Modify app name
         appName: goappdef
         imageTag: ${{steps.getImageTag.outputs.imagetag}}
