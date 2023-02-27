@@ -45,7 +45,7 @@ jobs:
     - name: ArgoCD Application Sync Action
       uses: Hanuvara/argocd-actions@master
       with:
-        address: "127.0.0.1:8080"
+        address: "192.168.49.2:32388"
         token: ${{ secrets.ARGOCD_AUTH_TOKEN }}
         insecure: "true"
         # Modify app name
