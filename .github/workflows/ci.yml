@@ -50,4 +50,5 @@ jobs:
         insecure: "true"
         # Modify app name
         appName: goappdef
+        timeout: 2m
         imageTag: ${{steps.getImageTag.outputs.imagetag}}
